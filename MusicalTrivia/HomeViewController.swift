@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController1.swift
 //  MusicalTrivia
 //
 //  Created by David Wolgemuth on 1/25/16.
@@ -8,38 +8,34 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController
+class HomeViewController: UIViewController, HomeTableViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userImageView: UIImageView!
+    let imagePicker = UIImagePickerController()
+    var embedTableView: HomeTableViewController?
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        tableView.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
+        imagePicker.delegate = self
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)!
-        if cell.tag == 1 {
-            print("UserName Label")
-        } else if cell.tag == 2 {
-            print("User ImageView")
-        } else if let text = cell.textLabel?.text {
-            switch text {
-            case "Roulette":
-                print("New Roulette Game")
-            case "Single":
-                print("New Single Player Game")
-            case "Zen":
-                print("New Practice Session")
-            default:
-                break
-            }
+        if segue.identifier == "EmbedTableView" {
+            print("here")
+            embedTableView = segue.destinationViewController as? HomeTableViewController
+            embedTableView!.delegate = self
         }
     }
-
+    func pickImage()
+    {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
+    {
+        UserData.setUserImage(image)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
+
