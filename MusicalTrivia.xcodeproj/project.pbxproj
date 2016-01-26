@@ -22,6 +22,11 @@
 		63483D411C57D86D00A5C515 /* half-note.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3D1C57D86D00A5C515 /* half-note.png */; };
 		63483D421C57D86D00A5C515 /* whole-rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3E1C57D86D00A5C515 /* whole-rest.png */; };
 		63483D431C57D86D00A5C515 /* quarter-rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3F1C57D86D00A5C515 /* quarter-rest.png */; };
+		63483D451C58217900A5C515 /* headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D441C58217900A5C515 /* headphones.png */; };
+		63483D471C5821BA00A5C515 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63483D461C5821BA00A5C515 /* Interval.swift */; };
+		63483D4B1C5823F900A5C515 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63483D4A1C5823F900A5C515 /* AudioPlayer.swift */; };
+		63483D4C1C582C1A00A5C515 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63483D481C58235F00A5C515 /* AudioKit.framework */; };
+		63483D4D1C582C1A00A5C515 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63483D481C58235F00A5C515 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63506EF51C56D0BA00AA0C6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */; };
 		63506EF71C56DE4900AA0C6B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF61C56DE4900AA0C6B /* UserData.swift */; };
 		63B581D01C56E15300EFD835 /* rogue.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B581CF1C56E15300EFD835 /* rogue.png */; };
@@ -35,6 +40,20 @@
 		63DD6AAB1C569F7500E50A6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AAA1C569F7500E50A6B /* Assets.xcassets */; };
 		63DD6AAE1C569F7500E50A6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AAC1C569F7500E50A6B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		63483D4E1C582C1A00A5C515 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				63483D4D1C582C1A00A5C515 /* AudioKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		633415641C570E5C000023C8 /* flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flat.png; sourceTree = "<group>"; };
@@ -52,6 +71,10 @@
 		63483D3D1C57D86D00A5C515 /* half-note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "half-note.png"; path = "../../../../../../Downloads/half-note.png"; sourceTree = "<group>"; };
 		63483D3E1C57D86D00A5C515 /* whole-rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "whole-rest.png"; path = "../../../../../../Downloads/whole-rest.png"; sourceTree = "<group>"; };
 		63483D3F1C57D86D00A5C515 /* quarter-rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "quarter-rest.png"; path = "../../../../../../Downloads/quarter-rest.png"; sourceTree = "<group>"; };
+		63483D441C58217900A5C515 /* headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headphones.png; sourceTree = "<group>"; };
+		63483D461C5821BA00A5C515 /* Interval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
+		63483D481C58235F00A5C515 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
+		63483D4A1C5823F900A5C515 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		63506EF61C56DE4900AA0C6B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		63B581CF1C56E15300EFD835 /* rogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rogue.png; sourceTree = "<group>"; };
@@ -73,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63483D4C1C582C1A00A5C515 /* AudioKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +108,8 @@
 			children = (
 				6334156E1C570F36000023C8 /* Note.swift */,
 				6334156F1C570F36000023C8 /* Scale.swift */,
+				63483D461C5821BA00A5C515 /* Interval.swift */,
+				63483D4A1C5823F900A5C515 /* AudioPlayer.swift */,
 				633415701C570F36000023C8 /* Triad.swift */,
 			);
 			name = NotationModels;
@@ -99,6 +125,7 @@
 				6339639B1C57D7E100A1AA37 /* whole-note-score.png */,
 				633415641C570E5C000023C8 /* flat.png */,
 				633415651C570E5C000023C8 /* natural.png */,
+				63483D441C58217900A5C515 /* headphones.png */,
 				633415661C570E5C000023C8 /* sharp.png */,
 				633415671C570E5C000023C8 /* staff.jpg */,
 				633415681C570E5C000023C8 /* whole-note.png */,
@@ -110,6 +137,7 @@
 		63DD6A941C569F7500E50A6B = {
 			isa = PBXGroup;
 			children = (
+				63483D481C58235F00A5C515 /* AudioKit.framework */,
 				63DD6A9F1C569F7500E50A6B /* MusicalTrivia */,
 				63DD6A9E1C569F7500E50A6B /* Products */,
 			);
@@ -156,6 +184,7 @@
 				63DD6A991C569F7500E50A6B /* Sources */,
 				63DD6A9A1C569F7500E50A6B /* Frameworks */,
 				63DD6A9B1C569F7500E50A6B /* Resources */,
+				63483D4E1C582C1A00A5C515 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +244,7 @@
 				63B581D01C56E15300EFD835 /* rogue.png in Resources */,
 				6334156B1C570E5C000023C8 /* sharp.png in Resources */,
 				63483D431C57D86D00A5C515 /* quarter-rest.png in Resources */,
+				63483D451C58217900A5C515 /* headphones.png in Resources */,
 				63483D421C57D86D00A5C515 /* whole-rest.png in Resources */,
 				6334156D1C570E5C000023C8 /* whole-note.png in Resources */,
 				63DD6AA61C569F7500E50A6B /* Main.storyboard in Resources */,
@@ -230,6 +260,7 @@
 			files = (
 				6339639A1C57D50600A1AA37 /* SinglePlayerViewController.swift in Sources */,
 				63DD6AA31C569F7500E50A6B /* HomeTableViewController.swift in Sources */,
+				63483D4B1C5823F900A5C515 /* AudioPlayer.swift in Sources */,
 				63DD6AA11C569F7500E50A6B /* AppDelegate.swift in Sources */,
 				633415741C570F36000023C8 /* Triad.swift in Sources */,
 				63DD6AA91C569F7500E50A6B /* MusicalTrivia.xcdatamodeld in Sources */,
@@ -240,6 +271,7 @@
 				63506EF51C56D0BA00AA0C6B /* HomeViewController.swift in Sources */,
 				63B581D31C56EED100EFD835 /* ZenModeViewController.swift in Sources */,
 				633415731C570F36000023C8 /* Scale.swift in Sources */,
+				63483D471C5821BA00A5C515 /* Interval.swift in Sources */,
 				63B581D71C56F75C00EFD835 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +385,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MusicalTrivia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = codingdojo.david.MusicalTrivia;
@@ -364,6 +400,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MusicalTrivia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = codingdojo.david.MusicalTrivia;
