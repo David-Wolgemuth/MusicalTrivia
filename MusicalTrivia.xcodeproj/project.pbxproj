@@ -16,6 +16,12 @@
 		633415731C570F36000023C8 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334156F1C570F36000023C8 /* Scale.swift */; };
 		633415741C570F36000023C8 /* Triad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633415701C570F36000023C8 /* Triad.swift */; };
 		633415751C570F36000023C8 /* MusicNotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633415711C570F36000023C8 /* MusicNotationViewController.swift */; };
+		6339639A1C57D50600A1AA37 /* SinglePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633963991C57D50600A1AA37 /* SinglePlayerViewController.swift */; };
+		6339639C1C57D7E100A1AA37 /* whole-note-score.png in Resources */ = {isa = PBXBuildFile; fileRef = 6339639B1C57D7E100A1AA37 /* whole-note-score.png */; };
+		63483D401C57D86D00A5C515 /* quarter-note.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3C1C57D86D00A5C515 /* quarter-note.png */; };
+		63483D411C57D86D00A5C515 /* half-note.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3D1C57D86D00A5C515 /* half-note.png */; };
+		63483D421C57D86D00A5C515 /* whole-rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3E1C57D86D00A5C515 /* whole-rest.png */; };
+		63483D431C57D86D00A5C515 /* quarter-rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 63483D3F1C57D86D00A5C515 /* quarter-rest.png */; };
 		63506EF51C56D0BA00AA0C6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */; };
 		63506EF71C56DE4900AA0C6B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF61C56DE4900AA0C6B /* UserData.swift */; };
 		63B581D01C56E15300EFD835 /* rogue.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B581CF1C56E15300EFD835 /* rogue.png */; };
@@ -40,6 +46,12 @@
 		6334156F1C570F36000023C8 /* Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		633415701C570F36000023C8 /* Triad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triad.swift; sourceTree = "<group>"; };
 		633415711C570F36000023C8 /* MusicNotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicNotationViewController.swift; sourceTree = "<group>"; };
+		633963991C57D50600A1AA37 /* SinglePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePlayerViewController.swift; sourceTree = "<group>"; };
+		6339639B1C57D7E100A1AA37 /* whole-note-score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whole-note-score.png"; sourceTree = "<group>"; };
+		63483D3C1C57D86D00A5C515 /* quarter-note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "quarter-note.png"; path = "../../../../../../Downloads/quarter-note.png"; sourceTree = "<group>"; };
+		63483D3D1C57D86D00A5C515 /* half-note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "half-note.png"; path = "../../../../../../Downloads/half-note.png"; sourceTree = "<group>"; };
+		63483D3E1C57D86D00A5C515 /* whole-rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "whole-rest.png"; path = "../../../../../../Downloads/whole-rest.png"; sourceTree = "<group>"; };
+		63483D3F1C57D86D00A5C515 /* quarter-rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "quarter-rest.png"; path = "../../../../../../Downloads/quarter-rest.png"; sourceTree = "<group>"; };
 		63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		63506EF61C56DE4900AA0C6B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		63B581CF1C56E15300EFD835 /* rogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rogue.png; sourceTree = "<group>"; };
@@ -80,6 +92,11 @@
 		63B581D11C56EAEA00EFD835 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				63483D3C1C57D86D00A5C515 /* quarter-note.png */,
+				63483D3D1C57D86D00A5C515 /* half-note.png */,
+				63483D3E1C57D86D00A5C515 /* whole-rest.png */,
+				63483D3F1C57D86D00A5C515 /* quarter-rest.png */,
+				6339639B1C57D7E100A1AA37 /* whole-note-score.png */,
 				633415641C570E5C000023C8 /* flat.png */,
 				633415651C570E5C000023C8 /* natural.png */,
 				633415661C570E5C000023C8 /* sharp.png */,
@@ -114,6 +131,7 @@
 				63506EF61C56DE4900AA0C6B /* UserData.swift */,
 				63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */,
 				63DD6AA41C569F7500E50A6B /* Main.storyboard */,
+				633963991C57D50600A1AA37 /* SinglePlayerViewController.swift */,
 				63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */,
 				63B581D61C56F75C00EFD835 /* Game.swift */,
 				63B581D21C56EED100EFD835 /* ZenModeViewController.swift */,
@@ -186,13 +204,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6339639C1C57D7E100A1AA37 /* whole-note-score.png in Resources */,
 				63DD6AAE1C569F7500E50A6B /* LaunchScreen.storyboard in Resources */,
+				63483D411C57D86D00A5C515 /* half-note.png in Resources */,
+				63483D401C57D86D00A5C515 /* quarter-note.png in Resources */,
 				6334156A1C570E5C000023C8 /* natural.png in Resources */,
 				633415691C570E5C000023C8 /* flat.png in Resources */,
 				63DD6AAB1C569F7500E50A6B /* Assets.xcassets in Resources */,
 				6334156C1C570E5C000023C8 /* staff.jpg in Resources */,
 				63B581D01C56E15300EFD835 /* rogue.png in Resources */,
 				6334156B1C570E5C000023C8 /* sharp.png in Resources */,
+				63483D431C57D86D00A5C515 /* quarter-rest.png in Resources */,
+				63483D421C57D86D00A5C515 /* whole-rest.png in Resources */,
 				6334156D1C570E5C000023C8 /* whole-note.png in Resources */,
 				63DD6AA61C569F7500E50A6B /* Main.storyboard in Resources */,
 			);
@@ -205,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6339639A1C57D50600A1AA37 /* SinglePlayerViewController.swift in Sources */,
 				63DD6AA31C569F7500E50A6B /* HomeTableViewController.swift in Sources */,
 				63DD6AA11C569F7500E50A6B /* AppDelegate.swift in Sources */,
 				633415741C570F36000023C8 /* Triad.swift in Sources */,
