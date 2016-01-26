@@ -13,12 +13,16 @@ protocol HomeTableViewControllerDelegate
     func pickImage()
 }
 
-class HomeTableViewController: UITableViewController
+class HomeTableViewController: UITableViewController, StandardDelegate
 {
     var delegate: HomeTableViewControllerDelegate?
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userWinsLabel: UILabel!
+    @IBOutlet weak var userLossesLabel: UILabel!
+    @IBOutlet weak var userCorrectsLabel: UILabel!
+    @IBOutlet weak var userIncorrectsLabel: UILabel!
     
     override func viewDidLoad()
     {
@@ -42,6 +46,19 @@ class HomeTableViewController: UITableViewController
         } else {
             userImageView.image = UIImage(named: "rogue.png")
         }
+        let games = UserData.playerGameHistory()
+        userWinsLabel.text = String(games.won)
+        userLossesLabel.text = String(games.lost)
+        let questions = UserData.playerQuestionHistory()
+        userCorrectsLabel.text = String(questions.correct)
+        userIncorrectsLabel.text = String(questions.incorrect)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "ZenMode" {
+            let controller = segue.destinationViewController as! ZenModeViewController
+            controller.delegate = self
+        }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -59,7 +76,7 @@ class HomeTableViewController: UITableViewController
             case "Single":
                 print("New Single Player Game")
             case "Zen":
-                print("New Practice Session")
+                performSegueWithIdentifier("ZenMode", sender: nil)
             default:
                 break
             }
@@ -81,5 +98,8 @@ class HomeTableViewController: UITableViewController
         })
         presentViewController(alert, animated: true, completion: nil)
     }
-    
+    func dismissView()
+    {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, HomeTableViewControllerDelegate, UII
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if segue.identifier == "EmbedTableView" {
-            print("here")
             embedTableView = segue.destinationViewController as? HomeTableViewController
             embedTableView!.delegate = self
         }

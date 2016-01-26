@@ -7,9 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		633415691C570E5C000023C8 /* flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 633415641C570E5C000023C8 /* flat.png */; };
+		6334156A1C570E5C000023C8 /* natural.png in Resources */ = {isa = PBXBuildFile; fileRef = 633415651C570E5C000023C8 /* natural.png */; };
+		6334156B1C570E5C000023C8 /* sharp.png in Resources */ = {isa = PBXBuildFile; fileRef = 633415661C570E5C000023C8 /* sharp.png */; };
+		6334156C1C570E5C000023C8 /* staff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 633415671C570E5C000023C8 /* staff.jpg */; };
+		6334156D1C570E5C000023C8 /* whole-note.png in Resources */ = {isa = PBXBuildFile; fileRef = 633415681C570E5C000023C8 /* whole-note.png */; };
+		633415721C570F36000023C8 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334156E1C570F36000023C8 /* Note.swift */; };
+		633415731C570F36000023C8 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6334156F1C570F36000023C8 /* Scale.swift */; };
+		633415741C570F36000023C8 /* Triad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633415701C570F36000023C8 /* Triad.swift */; };
+		633415751C570F36000023C8 /* MusicNotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633415711C570F36000023C8 /* MusicNotationViewController.swift */; };
 		63506EF51C56D0BA00AA0C6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */; };
 		63506EF71C56DE4900AA0C6B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF61C56DE4900AA0C6B /* UserData.swift */; };
 		63B581D01C56E15300EFD835 /* rogue.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B581CF1C56E15300EFD835 /* rogue.png */; };
+		63B581D31C56EED100EFD835 /* ZenModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B581D21C56EED100EFD835 /* ZenModeViewController.swift */; };
+		63B581D51C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */; };
+		63B581D71C56F75C00EFD835 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B581D61C56F75C00EFD835 /* Game.swift */; };
 		63DD6AA11C569F7500E50A6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AA01C569F7500E50A6B /* AppDelegate.swift */; };
 		63DD6AA31C569F7500E50A6B /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DD6AA21C569F7500E50A6B /* HomeTableViewController.swift */; };
 		63DD6AA61C569F7500E50A6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD6AA41C569F7500E50A6B /* Main.storyboard */; };
@@ -19,9 +31,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		633415641C570E5C000023C8 /* flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flat.png; sourceTree = "<group>"; };
+		633415651C570E5C000023C8 /* natural.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = natural.png; sourceTree = "<group>"; };
+		633415661C570E5C000023C8 /* sharp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sharp.png; sourceTree = "<group>"; };
+		633415671C570E5C000023C8 /* staff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = staff.jpg; sourceTree = "<group>"; };
+		633415681C570E5C000023C8 /* whole-note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whole-note.png"; sourceTree = "<group>"; };
+		6334156E1C570F36000023C8 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		6334156F1C570F36000023C8 /* Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
+		633415701C570F36000023C8 /* Triad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triad.swift; sourceTree = "<group>"; };
+		633415711C570F36000023C8 /* MusicNotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicNotationViewController.swift; sourceTree = "<group>"; };
 		63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		63506EF61C56DE4900AA0C6B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		63B581CF1C56E15300EFD835 /* rogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rogue.png; sourceTree = "<group>"; };
+		63B581D21C56EED100EFD835 /* ZenModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenModeViewController.swift; sourceTree = "<group>"; };
+		63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenModeSettingsTableViewController.swift; sourceTree = "<group>"; };
+		63B581D61C56F75C00EFD835 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		63DD6A9D1C569F7500E50A6B /* MusicalTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicalTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DD6AA01C569F7500E50A6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63DD6AA21C569F7500E50A6B /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +67,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		633415761C570F3E000023C8 /* NotationModels */ = {
+			isa = PBXGroup;
+			children = (
+				6334156E1C570F36000023C8 /* Note.swift */,
+				6334156F1C570F36000023C8 /* Scale.swift */,
+				633415701C570F36000023C8 /* Triad.swift */,
+			);
+			name = NotationModels;
+			sourceTree = "<group>";
+		};
+		63B581D11C56EAEA00EFD835 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				633415641C570E5C000023C8 /* flat.png */,
+				633415651C570E5C000023C8 /* natural.png */,
+				633415661C570E5C000023C8 /* sharp.png */,
+				633415671C570E5C000023C8 /* staff.jpg */,
+				633415681C570E5C000023C8 /* whole-note.png */,
+				63B581CF1C56E15300EFD835 /* rogue.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		63DD6A941C569F7500E50A6B = {
 			isa = PBXGroup;
 			children = (
@@ -67,11 +114,16 @@
 				63506EF61C56DE4900AA0C6B /* UserData.swift */,
 				63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */,
 				63DD6AA41C569F7500E50A6B /* Main.storyboard */,
+				63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */,
+				63B581D61C56F75C00EFD835 /* Game.swift */,
+				63B581D21C56EED100EFD835 /* ZenModeViewController.swift */,
+				633415761C570F3E000023C8 /* NotationModels */,
+				633415711C570F36000023C8 /* MusicNotationViewController.swift */,
 				63DD6AAA1C569F7500E50A6B /* Assets.xcassets */,
 				63DD6AAC1C569F7500E50A6B /* LaunchScreen.storyboard */,
 				63DD6AAF1C569F7500E50A6B /* Info.plist */,
 				63DD6AA71C569F7500E50A6B /* MusicalTrivia.xcdatamodeld */,
-				63B581CF1C56E15300EFD835 /* rogue.png */,
+				63B581D11C56EAEA00EFD835 /* images */,
 			);
 			path = MusicalTrivia;
 			sourceTree = "<group>";
@@ -135,8 +187,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DD6AAE1C569F7500E50A6B /* LaunchScreen.storyboard in Resources */,
+				6334156A1C570E5C000023C8 /* natural.png in Resources */,
+				633415691C570E5C000023C8 /* flat.png in Resources */,
 				63DD6AAB1C569F7500E50A6B /* Assets.xcassets in Resources */,
+				6334156C1C570E5C000023C8 /* staff.jpg in Resources */,
 				63B581D01C56E15300EFD835 /* rogue.png in Resources */,
+				6334156B1C570E5C000023C8 /* sharp.png in Resources */,
+				6334156D1C570E5C000023C8 /* whole-note.png in Resources */,
 				63DD6AA61C569F7500E50A6B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,9 +207,16 @@
 			files = (
 				63DD6AA31C569F7500E50A6B /* HomeTableViewController.swift in Sources */,
 				63DD6AA11C569F7500E50A6B /* AppDelegate.swift in Sources */,
+				633415741C570F36000023C8 /* Triad.swift in Sources */,
 				63DD6AA91C569F7500E50A6B /* MusicalTrivia.xcdatamodeld in Sources */,
 				63506EF71C56DE4900AA0C6B /* UserData.swift in Sources */,
+				63B581D51C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift in Sources */,
+				633415751C570F36000023C8 /* MusicNotationViewController.swift in Sources */,
+				633415721C570F36000023C8 /* Note.swift in Sources */,
 				63506EF51C56D0BA00AA0C6B /* HomeViewController.swift in Sources */,
+				63B581D31C56EED100EFD835 /* ZenModeViewController.swift in Sources */,
+				633415731C570F36000023C8 /* Scale.swift in Sources */,
+				63B581D71C56F75C00EFD835 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
