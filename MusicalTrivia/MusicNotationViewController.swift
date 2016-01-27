@@ -8,6 +8,20 @@
 
 import UIKit
 
+protocol NotationDelegate
+{
+    func playerAnswered(answerCorrect correct: Bool)
+    func startTimer()
+    func stopTimer()
+}
+
+enum Answer {
+    case Unanswered
+    case Correct
+    case Incorrect
+}
+
+typealias QuestionTuple = (type: String, answer: AnyObject, choices: [String])
 
 class MusicNotationViewController: UIViewController
 {
@@ -15,6 +29,8 @@ class MusicNotationViewController: UIViewController
     let rowHeight = 82
     let offsetX = 280
     let spaceX = 60
+    var delegate: NotationDelegate?
+    var answered = Answer.Unanswered
     
     var currentAnswer: String?
     
@@ -29,10 +45,34 @@ class MusicNotationViewController: UIViewController
     
     func buttonClicked(sender: UIButton!)
     {
+        if answered != .Unanswered {
+            return
+        }
         if sender.titleLabel?.text == currentAnswer {
-            print("Correct!")
+            sender.backgroundColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
+            answered = .Correct
         } else {
-            print("Incorrect!")
+            sender.backgroundColor = UIColor(red: 1, green: 0.7, blue: 0.7, alpha: 1)
+            showAnswer()
+            answered = .Incorrect
+        }
+        let correct = answered == .Correct
+        delegate?.playerAnswered(answerCorrect: correct)
+    }
+    
+    func showAnswer()
+    {
+        delegate?.stopTimer()
+        for button in AnswerButtons {
+            if button.titleLabel?.text == currentAnswer {
+                button.backgroundColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
+            }
+        }
+    }
+    func toggleButtons(on: Bool)
+    {
+        for button in AnswerButtons {
+            button.hidden = !on
         }
     }
     
@@ -40,17 +80,74 @@ class MusicNotationViewController: UIViewController
     
     @IBOutlet var AnswerButtons: [UIButton]!
     
-    func newQuestion()
+    func newQuestion() -> (type: String, answer: AnyObject, choices: [String])
     {
-        if arc4random_uniform(2) == 1 {
-            let scale = newScaleQuestion()
+        toggleButtons(false)
+        answered = .Unanswered
+        
+        let question: QuestionTuple
+        
+        switch arc4random_uniform(3) {
+        case 0:
+            question = newScaleQuestion()
+            let scale = question.answer as! Scale
             createStaffImage(withScale: scale, triad: nil)
-        } else {
-            let triad = newTriadQuestion()
+        case 1:
+            question = newTriadQuestion()
+            let triad = question.answer as! Triad
             createStaffImage(withScale: triad.scale, triad: triad)
+        case 2:
+            question = newIntervalQuestion()
+            let interval = question.answer as! Interval
+            let start = interval.startNote
+            let end = start + interval.interval
+            staffImage.image = UIImage(named: "headphones.png")
+            AudioPlayer.sharedInstance.playInterval(from: start, to: end)
+        default:
+            print("This Should Never Print")
+            question = ("Error", "", ["huh?"])
         }
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "startTimer", userInfo: nil, repeats: false)
+        return question
     }
-    func newScaleQuestion() -> Scale
+    func displayQuestion(question: QuestionTuple)
+    {
+        toggleButtons(false)
+        answered = .Unanswered
+        
+        let answer = question.answer as! [String: AnyObject]
+        switch question.type {
+        case "scale":
+            let scale = Scale.initFromJSON(answer)
+            currentAnswer = scale.description
+            createStaffImage(withScale: scale, triad: nil)
+        case "triad":
+            let triad = Triad.initFromJSON(answer)
+            currentAnswer = triad.description
+            createStaffImage(withScale: triad.scale, triad: triad)
+        case "interval":
+            let interval = Interval.initFromJSON(answer)
+            currentAnswer = interval.name
+            let start = interval.startNote
+            let end = start + interval.interval
+            staffImage.image = UIImage(named: "headphones.png")
+            AudioPlayer.sharedInstance.playInterval(from: start, to: end)
+        default:
+            currentAnswer = "Something Bad Happened"
+            break
+        }
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "startTimer", userInfo: nil, repeats: false)
+        setButtonsAndAnswer(question.choices)
+        
+    }
+    func startTimer()
+    {
+        toggleButtons(true)
+        delegate?.startTimer()
+    }
+    func newScaleQuestion() -> QuestionTuple
     {
         var scales = [Scale]()
         while scales.count < 4 {
@@ -72,9 +169,30 @@ class MusicNotationViewController: UIViewController
         }
         currentAnswer = scales[0].description
         setButtonsAndAnswer(answers)
-        return scales[0]
+        return ("scale", scales[0], answers)
     }
-    func newTriadQuestion() -> Triad
+    func newIntervalQuestion() -> QuestionTuple
+    {
+        let answer = Interval.random()
+        var intervals = [answer.name]
+        while intervals.count < 4 {
+            let interval = Interval.random()
+            var isUnique = true
+            for intA in intervals {
+                if intA == interval.name {
+                    isUnique = false
+                }
+            }
+            if isUnique {
+                intervals.append(interval.name)
+            }
+        }
+        
+        currentAnswer = answer.name
+        setButtonsAndAnswer(intervals)
+        return ("interval", answer, intervals)
+    }
+    func newTriadQuestion() -> QuestionTuple
     {
         // Create 4 Unique Triads
         var triads = [Triad]()
@@ -97,7 +215,7 @@ class MusicNotationViewController: UIViewController
         }
         currentAnswer = triads[0].description
         setButtonsAndAnswer(answers)
-        return triads[0]
+        return ("triad", triads[0], answers)
     }
     func setButtonsAndAnswer(var possibleAnswers: [String])
     {
@@ -107,6 +225,7 @@ class MusicNotationViewController: UIViewController
         for i in 0..<AnswerButtons.count {
             let answer = possibleAnswers[i]
             AnswerButtons[i].setTitle(answer, forState: .Normal)
+            AnswerButtons[i].backgroundColor = UIColor(white: 255, alpha: 0)
         }
     }
     func createStaffImage(withScale scale: Scale?, triad: Triad?)

@@ -29,7 +29,8 @@ class ZenModeSettingsTableViewController: UITableViewController
             for row in 0..<types[section][1].count {
                 let indexPath = NSIndexPath(forRow: row, inSection: section)
                 let cell = tableView.cellForRowAtIndexPath(indexPath)
-                let option = types[section][1][row] as! String
+                let sect = types[section][1] as! [String]
+                let option = sect[row]
                 let isSet = game!.questionTypes[key]![option]!
                 cell?.accessoryType = isSet ? .Checkmark : .None
             }
@@ -46,7 +47,8 @@ class ZenModeSettingsTableViewController: UITableViewController
         }
         let type = types[indexPath.section]
         let key = type[0] as! String
-        let option = type[1][indexPath.row] as! String
+        let options = type[1] as! [String]
+        let option = options[indexPath.row]
         print(key + " - " + option)
         let isSet = game!.questionTypes[key]![option]!
         print(isSet)

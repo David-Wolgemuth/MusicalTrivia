@@ -19,7 +19,7 @@ enum ScaleMode: Int
     case Locrian
 }
 
-class Scale: CustomStringConvertible
+class Scale: CustomStringConvertible, JSONCompatable
 {
     let ionianRoot: String
     var notes = [String]()
@@ -37,6 +37,12 @@ class Scale: CustomStringConvertible
                 str += " \(mode)"
             }
             return str
+        }
+    }
+    
+    var dictionary: [String: AnyObject] {
+        get {
+            return ["root": ionianRoot, "mode": mode.rawValue]
         }
     }
     
@@ -116,6 +122,16 @@ class Scale: CustomStringConvertible
         let scale = Scale(name: scaleName)
         if !ionian {
             let mode = ScaleMode(rawValue: Int(arc4random_uniform(7)))!
+            scale.shiftToMode(mode)
+        }
+        return scale
+    }
+    static func initFromJSON(json: [String: AnyObject]) -> Scale
+    {
+        let root = json["root"] as! String!
+        let mode = ScaleMode(rawValue: json["mode"] as! Int!)!
+        let scale = Scale(name: root)
+        if mode != .Ionian {
             scale.shiftToMode(mode)
         }
         return scale

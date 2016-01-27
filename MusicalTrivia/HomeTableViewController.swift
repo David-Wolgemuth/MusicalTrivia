@@ -58,6 +58,11 @@ class HomeTableViewController: UITableViewController, StandardDelegate
         if segue.identifier == "ZenMode" {
             let controller = segue.destinationViewController as! ZenModeViewController
             controller.delegate = self
+        } else if segue.identifier == "SinglePlayer" {
+            let controller = segue.destinationViewController as! SinglePlayerViewController
+            controller.delegate = self
+        } else if segue.identifier == "Roulette" {
+            
         }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
@@ -72,9 +77,9 @@ class HomeTableViewController: UITableViewController, StandardDelegate
         } else if let text = cell.textLabel?.text {
             switch text {
             case "Roulette":
-                print("New Roulette Game")
+                performSegueWithIdentifier("Roulette", sender: nil)
             case "Single":
-                print("New Single Player Game")
+                performSegueWithIdentifier("SinglePlayer", sender: nil)
             case "Zen":
                 performSegueWithIdentifier("ZenMode", sender: nil)
             default:

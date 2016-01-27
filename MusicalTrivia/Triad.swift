@@ -15,7 +15,7 @@ enum TriadType: String
     case Diminished
 }
 
-enum TriadPosition
+enum TriadPosition: Int
 {
     case Root
     case FirstInversion
@@ -35,7 +35,7 @@ enum TriadPosition
     }
 }
 
-class Triad: CustomStringConvertible
+class Triad: CustomStringConvertible, JSONCompatable
 {
     var notes = [Note]()
     let base: String
@@ -43,6 +43,12 @@ class Triad: CustomStringConvertible
     let type: TriadType
     let scale: Scale
     let position: TriadPosition
+    
+    var dictionary: [String: AnyObject] {
+        get {
+            return ["base": base, "type": type.rawValue, "octave": octave, "scale": scale.dictionary, "position": position.hashValue]
+        }
+    }
     
     var noteString: String {
         get {
@@ -147,5 +153,15 @@ class Triad: CustomStringConvertible
         let octave = Int(arc4random_uniform(1)) + 3
         
         return Triad(base: base, type: chordType, octave: octave, scale: scale, position: position)
+    }
+    static func initFromJSON(json: [String: AnyObject]) -> Triad
+    {
+        let base = json["base"] as! String!
+        let type = TriadType(rawValue: json["type"] as! String!)!
+        let octave = json["octave"] as! Int!
+        let scale = Scale.initFromJSON(json["scale"] as! [String: AnyObject]!)
+        let position = TriadPosition(rawValue: json["position"] as! Int!)!
+        
+        return Triad(base: base, type: type, octave: octave, scale: scale, position: position)
     }
 }

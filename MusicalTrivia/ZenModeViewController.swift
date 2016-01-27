@@ -13,14 +13,22 @@ protocol StandardDelegate
     func dismissView()
 }
 
-class ZenModeViewController: UIViewController, StandardDelegate
+class ZenModeViewController: UIViewController, StandardDelegate, NotationDelegate
 {
     var delegate: StandardDelegate?
     var game: Game?
+    var newQuestion = { }
+    
     
     @IBAction func backButtonPressed(sender: UIBarButtonItem)
     {
         delegate?.dismissView()
+    }
+    @IBOutlet weak var bottomNavBar: UINavigationItem!
+    @IBAction func newQuestionPressed(sender: AnyObject)
+    {
+        bottomNavBar.title = ""
+        newQuestion()
     }
     override func viewDidLoad()
     {
@@ -32,11 +40,31 @@ class ZenModeViewController: UIViewController, StandardDelegate
             let controller = segue.destinationViewController as! ZenModeSettingsTableViewController
             controller.game = self.game
             controller.delegate = self
+        } else if segue.identifier == "EmbedStaffNotation" {
+            let controller = segue.destinationViewController as! MusicNotationViewController
+//            newQuestion = controller.newQuestion
+            controller.delegate = self
+        }
+    }
+    func playerAnswered(answerCorrect correct: Bool)
+    {
+        if correct {
+            bottomNavBar.title = "Correct!"
+        } else {
+            bottomNavBar.title  = "Try Again!"
         }
     }
     func dismissView()
     {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    func startTimer()
+    {
+        print("No Timer")
+    }
+    func stopTimer()
+    {
+        print("Still No Timer")
     }
     
 }
