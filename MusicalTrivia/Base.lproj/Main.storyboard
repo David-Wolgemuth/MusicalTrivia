@@ -345,11 +345,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f53-Ak-OnU">
-                                <rect key="frame" x="20" y="67" width="560" height="80"/>
+                                <rect key="frame" x="20" y="91" width="560" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fup-xD-ry0">
-                                <rect key="frame" x="20" y="67" width="560" height="80"/>
+                                <rect key="frame" x="20" y="91" width="560" height="80"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whole-note-score.png" translatesAutoresizingMaskIntoConstraints="NO" id="XdD-Sa-wOV">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -387,13 +387,13 @@
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dff-bF-ERQ">
-                                <rect key="frame" x="20" y="147" width="560" height="453"/>
+                                <rect key="frame" x="20" y="171" width="560" height="429"/>
                                 <connections>
                                     <segue destination="doh-oV-Lb4" kind="embed" identifier="EmbedStaffNotation" id="JSg-Te-5qz"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5nl-mJ-QnP" userLabel="Score Header">
-                                <rect key="frame" x="20" y="20" width="560" height="48"/>
+                                <rect key="frame" x="20" y="44" width="560" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="8gE-2S-RUs"/>
                                 </constraints>
@@ -401,17 +401,30 @@
                                     <segue destination="asW-sm-uTC" kind="embed" identifier="EmbedRouletteHeader" id="aq9-py-aBt"/>
                                 </connections>
                             </containerView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0U-9z-dag">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="5FH-GJ-pWY">
+                                        <barButtonItem key="leftBarButtonItem" title="Leave Game" id="H8E-DP-tlj">
+                                            <connections>
+                                                <action selector="leaveGamePressed:" destination="hgi-ax-k3m" id="PiR-1Z-JKX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f53-Ak-OnU" firstAttribute="centerY" secondItem="fup-xD-ry0" secondAttribute="centerY" id="4Wb-4I-XcE"/>
                             <constraint firstItem="Dff-bF-ERQ" firstAttribute="trailing" secondItem="FYQ-ai-hl1" secondAttribute="trailingMargin" id="4dp-R5-H8l"/>
                             <constraint firstItem="0Ty-gy-KHa" firstAttribute="top" secondItem="TAt-NT-VTE" secondAttribute="bottom" id="5U9-4F-Eqb"/>
+                            <constraint firstItem="p0U-9z-dag" firstAttribute="leading" secondItem="FYQ-ai-hl1" secondAttribute="leadingMargin" constant="-20" id="7hP-fq-hNw"/>
                             <constraint firstItem="Dff-bF-ERQ" firstAttribute="top" secondItem="fup-xD-ry0" secondAttribute="bottom" id="Aea-1R-sxT"/>
                             <constraint firstItem="TAt-NT-VTE" firstAttribute="centerX" secondItem="FYQ-ai-hl1" secondAttribute="centerX" id="BHI-9x-LBb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fup-xD-ry0" secondAttribute="trailing" id="EAM-lO-Mtd"/>
                             <constraint firstItem="f53-Ak-OnU" firstAttribute="centerX" secondItem="fup-xD-ry0" secondAttribute="centerX" id="ONj-9X-Lph"/>
-                            <constraint firstItem="5nl-mJ-QnP" firstAttribute="top" secondItem="3yK-AE-E8w" secondAttribute="bottom" constant="20" id="OPB-fu-fjB"/>
+                            <constraint firstItem="5nl-mJ-QnP" firstAttribute="top" secondItem="p0U-9z-dag" secondAttribute="bottom" id="QHH-qo-lWN"/>
                             <constraint firstItem="TAt-NT-VTE" firstAttribute="centerY" secondItem="FYQ-ai-hl1" secondAttribute="centerY" id="To3-Me-Thh"/>
                             <constraint firstItem="5nl-mJ-QnP" firstAttribute="trailing" secondItem="FYQ-ai-hl1" secondAttribute="trailingMargin" id="Vgw-c8-XHJ"/>
                             <constraint firstItem="5nl-mJ-QnP" firstAttribute="leading" secondItem="FYQ-ai-hl1" secondAttribute="leadingMargin" id="W14-VH-frZ"/>
@@ -420,7 +433,9 @@
                             <constraint firstItem="Dff-bF-ERQ" firstAttribute="leading" secondItem="FYQ-ai-hl1" secondAttribute="leadingMargin" id="dCB-Nc-zii"/>
                             <constraint firstItem="fup-xD-ry0" firstAttribute="leading" secondItem="FYQ-ai-hl1" secondAttribute="leadingMargin" id="dIx-gC-1Er"/>
                             <constraint firstItem="f53-Ak-OnU" firstAttribute="height" secondItem="fup-xD-ry0" secondAttribute="height" id="nV2-01-ZGr"/>
+                            <constraint firstItem="p0U-9z-dag" firstAttribute="top" secondItem="3yK-AE-E8w" secondAttribute="bottom" id="wy4-zd-3dr"/>
                             <constraint firstItem="f53-Ak-OnU" firstAttribute="width" secondItem="fup-xD-ry0" secondAttribute="width" id="xEe-Tg-QnI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p0U-9z-dag" secondAttribute="trailing" constant="-20" id="xJf-bz-dVz"/>
                             <constraint firstItem="Gip-xI-nQF" firstAttribute="top" secondItem="Dff-bF-ERQ" secondAttribute="bottom" id="yUg-A7-lea"/>
                         </constraints>
                     </view>
@@ -800,7 +815,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WX0-ll-UNx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0gh-05-bbi">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="453"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdl-EC-8ay">

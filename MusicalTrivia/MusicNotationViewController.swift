@@ -37,7 +37,7 @@ class MusicNotationViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         for button in AnswerButtons {
             button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         }

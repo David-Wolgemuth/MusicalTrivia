@@ -17,7 +17,6 @@ class HomeViewController: UIViewController, HomeTableViewControllerDelegate, UII
     {
         imagePicker.delegate = self
         AudioPlayer.sharedInstance
-        Connection.sharedInstance
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {

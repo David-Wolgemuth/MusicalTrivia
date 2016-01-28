@@ -14,8 +14,7 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
     
     var delegate: StandardDelegate?
     var currentQuestion = 0
-    var newQuestion = {}
-    var showAnswer = {}
+    var questionController: MusicNotationViewController?
     @IBOutlet weak var timerColorView: UIView!
     var counter = 10.0
     var correctCount = 0
@@ -25,7 +24,7 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
     {
         noteScoreImages.sortInPlace { $0.0.tag < $0.1.tag }
         clearScore()
-        newQuestion()
+        questionController?.newQuestion()
     }
     
     @IBAction func leaveGamePressed(sender: UIBarButtonItem)
@@ -41,10 +40,8 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if segue.identifier == "EmbedStaffNotation" {
-            let controller = segue.destinationViewController as! MusicNotationViewController
-            controller.delegate = self
-//            newQuestion = controller.newQuestion
-            showAnswer = controller.showAnswer
+            questionController = segue.destinationViewController as?MusicNotationViewController
+            questionController?.delegate = self
         }
     }
     func clearScore()
@@ -59,7 +56,7 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
         let alpha = CGFloat((10 - counter) * 0.1)
         timerStopped = false
         timerColorView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: alpha)
-        newQuestion()
+        questionController?.newQuestion()
     }
     func playerAnswered(answerCorrect correct: Bool)
     {
@@ -125,7 +122,7 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
             counter -= 0.15
         } else {
             playerAnswered(answerCorrect: false)
-            showAnswer()
+            questionController?.showAnswer()
         }
         let alpha = CGFloat((10 - counter) * 0.1)
         timerColorView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: alpha)

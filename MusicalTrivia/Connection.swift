@@ -15,28 +15,18 @@ protocol JSONCompatable
 
 class Connection
 {
-    class var sharedInstance: Connection
-    {
-        struct Static
-        {
-            static let instance: Connection = Connection()
-        }
-        return Static.instance
-    }
+    
     
     var socket: SocketIOClient
     var eventListeners = [String]()
     
-    private init()
+    init(controller: RouletteViewController)
     {
         socket = SocketIOClient(socketURL: "david.local:5000")
-        connectToServer()
-    }
-    func connectToServer()
-    {
         socket.connect()
         socket.on("connect") { data, _ in
             print("Connected To Server")
+            self.requestNewGame(controller)
         }
     }
     func requestNewGame(controller: RouletteViewController)
@@ -47,8 +37,8 @@ class Connection
         }
         
         socket.emit("waiting", name)
+        self.eventListeners.append("new-game")
         socket.once("new-game") { data, _ in
-            self.eventListeners.append("new-game")
             let array = data[0] as! [AnyObject]
             let questionAsker = array[0] as! Bool
             let opponent = array[1] as! String
@@ -58,8 +48,8 @@ class Connection
     }
     func listenForQuestions(controller: RouletteViewController)
     {
+        self.eventListeners.append("new-question")
         socket.on("new-question") { data, _ in
-            self.eventListeners.append("new-question")
             let d = data[0] as! [AnyObject]
             let type = d[0] as! String
             print("Heard Question: \(type)")
@@ -73,17 +63,13 @@ class Connection
     }
     func listenForGameOver(controller: RouletteViewController)
     {
+        self.eventListeners.append("game-over")
         socket.once("game-over") { _, _ in
             controller.gameOverAlert()
             while self.eventListeners.count > 0 {
                 self.socket.off(self.eventListeners.popLast()!)
             }
         }
-    }
-    func resetConnection()
-    {
-        socket.disconnect()
-        connectToServer()
     }
     func sendNewQuestion(controller: RouletteViewController, question: QuestionTuple)
     {
@@ -96,19 +82,19 @@ class Connection
             timeLeft = -1
         }
         socket.emit("answer-result", timeLeft)
+        self.eventListeners.append("answer-results")
         socket.once("answer-results") { data, _ in
-            self.eventListeners.append("answer-results")
             let results = data[0] as! [Int]
             controller.answerResultsReceived(results)
         }
     }
     func sendGameOver(controller: RouletteViewController)
     {
+        print("duh fuck am i here?")
         socket.emit("game-over")
+        self.eventListeners.append("game-over")
         socket.once("game-over") { _, _ in
-            print("connection game-over")
             controller.gameOverAlert()
-            self.resetConnection()
         }
     }
 }

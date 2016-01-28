@@ -14,6 +14,17 @@ class RouletteViewController: UIViewController, NotationDelegate
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var waitingForOpponentLabel: UILabel!
     
+    @IBAction func leaveGamePressed(sender: UIBarButtonItem)
+    {
+        let alert = UIAlertController(title: "Leave Game?", message: "All Progress Will Be Lost", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Leave Game.", style: .Destructive) {
+            UIAlertAction in
+            self.connection?.socket.disconnect()
+            self.delegate?.dismissView()
+        })
+        presentViewController(alert, animated: true, completion: nil)
+    }
     @IBOutlet var noteScoreImages: [UIImageView]!
     @IBOutlet weak var timerColorView: UIView!
     
@@ -25,7 +36,7 @@ class RouletteViewController: UIViewController, NotationDelegate
     var counter = 10.0
     var header: RouletteHeaderViewController?
     var delegate: StandardDelegate?
-    
+    var connection: Connection?
     var score = [0, 0]
     
     override func viewDidLoad()
@@ -35,7 +46,7 @@ class RouletteViewController: UIViewController, NotationDelegate
         clearScore()
         containerView.hidden = true
         activityIndicator.startAnimating()
-        Connection.sharedInstance.requestNewGame(self)
+        connection = Connection(controller: self)
         header!.setScore(score)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -63,19 +74,20 @@ class RouletteViewController: UIViewController, NotationDelegate
         if questionAsker {
             makeNewQuestion()
         } else {
-            Connection.sharedInstance.listenForQuestions(self)
+            connection?.listenForQuestions(self)
         }
     }
     func playerAnswered(answerCorrect correct: Bool)
     {
         timerStopped = true
-        Connection.sharedInstance.sendAnswerResult(correct, timeLeft: counter, controller: self)
+        print("I came here and my answer was correct? \(correct)")
+        connection?.sendAnswerResult(correct, timeLeft: counter, controller: self)
         counter = 10
     }
     func makeNewQuestion()
     {
         let question = questionController?.newQuestion()
-        Connection.sharedInstance.sendNewQuestion(self, question: question!)
+        connection?.sendNewQuestion(self, question: question!)
     }
     func incomingQuestion(question: QuestionTuple)
     {
@@ -112,7 +124,7 @@ class RouletteViewController: UIViewController, NotationDelegate
         if currentQuestion < 7 {
             NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "makeNewQuestion", userInfo: nil, repeats: false)
         } else {
-            Connection.sharedInstance.sendGameOver(self)
+            connection!.sendGameOver(self)
         }
     }
     func gameOverAlert()
