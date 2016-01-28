@@ -17,7 +17,7 @@ class ZenModeViewController: UIViewController, StandardDelegate, NotationDelegat
 {
     var delegate: StandardDelegate?
     var game: Game?
-    var newQuestion = { }
+    var questionController: MusicNotationViewController?
     
     
     @IBAction func backButtonPressed(sender: UIBarButtonItem)
@@ -28,7 +28,7 @@ class ZenModeViewController: UIViewController, StandardDelegate, NotationDelegat
     @IBAction func newQuestionPressed(sender: AnyObject)
     {
         bottomNavBar.title = ""
-        newQuestion()
+        questionController?.newQuestion()
     }
     override func viewDidLoad()
     {
@@ -41,9 +41,8 @@ class ZenModeViewController: UIViewController, StandardDelegate, NotationDelegat
             controller.game = self.game
             controller.delegate = self
         } else if segue.identifier == "EmbedStaffNotation" {
-            let controller = segue.destinationViewController as! MusicNotationViewController
-//            newQuestion = controller.newQuestion
-            controller.delegate = self
+            questionController = segue.destinationViewController as? MusicNotationViewController
+            questionController?.delegate = self
         }
     }
     func playerAnswered(answerCorrect correct: Bool)

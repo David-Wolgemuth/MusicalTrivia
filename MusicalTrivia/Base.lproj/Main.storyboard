@@ -404,7 +404,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0U-9z-dag">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <navigationItem id="5FH-GJ-pWY">
+                                    <navigationItem title="Roulette" id="5FH-GJ-pWY">
                                         <barButtonItem key="leftBarButtonItem" title="Leave Game" id="H8E-DP-tlj">
                                             <connections>
                                                 <action selector="leaveGamePressed:" destination="hgi-ax-k3m" id="PiR-1Z-JKX"/>
@@ -616,7 +616,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Zen Mode" id="GQh-zE-fpC">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="DXP-u8-h4y">
+                                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="DXP-u8-h4y">
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="Bcz-aI-YJE" id="P0f-Ny-wLQ"/>
                                             </connections>
@@ -629,15 +629,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-J5-pzf">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="eH5-e4-etv"/>
-                                </constraints>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-J5-pzf">
+                                <rect key="frame" x="0.0" y="526" width="600" height="74"/>
                                 <items>
                                     <navigationItem title="Ready?" prompt="" id="6rO-JI-jYH">
-                                        <barButtonItem key="leftBarButtonItem" title="Show" id="Ncg-3b-t40"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="hL2-ox-etM">
+                                        <barButtonItem key="rightBarButtonItem" title="New Question" id="hL2-ox-etM">
                                             <connections>
                                                 <action selector="newQuestionPressed:" destination="Bcz-aI-YJE" id="A9f-A0-8xb"/>
                                             </connections>
@@ -646,7 +642,7 @@
                                 </items>
                             </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxT-xL-5x6">
-                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="482"/>
                                 <connections>
                                     <segue destination="doh-oV-Lb4" kind="embed" identifier="EmbedStaffNotation" id="Wg3-EA-giB"/>
                                 </connections>
@@ -722,7 +718,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENZ-H0-FMm">
                                 <rect key="frame" x="0.0" y="-20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="f1U-pu-TcP">
+                                    <navigationItem title="Single Player" id="f1U-pu-TcP">
                                         <barButtonItem key="leftBarButtonItem" title="Leave Game" id="uBl-Wz-xgU">
                                             <connections>
                                                 <action selector="leaveGamePressed:" destination="oQz-eh-x0P" id="WAy-5v-tBK"/>
@@ -815,27 +811,23 @@
                         <viewControllerLayoutGuide type="bottom" id="WX0-ll-UNx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0gh-05-bbi">
-                        <rect key="frame" x="0.0" y="0.0" width="560" height="429"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="482"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdl-EC-8ay">
-                                <rect key="frame" x="0.0" y="419" width="280" height="27"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdl-EC-8ay">
+                                <rect key="frame" x="0.0" y="418" width="300" height="32"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HE9-Ls-Pl1">
-                                <rect key="frame" x="280" y="419" width="280" height="27"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HE9-Ls-Pl1">
+                                <rect key="frame" x="300" y="418" width="300" height="32"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHH-Th-qyM">
-                                <rect key="frame" x="0.0" y="439" width="280" height="0.0"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHH-Th-qyM">
+                                <rect key="frame" x="0.0" y="450" width="300" height="32"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UA-v0-bVy">
-                                <rect key="frame" x="280" y="439" width="280" height="0.0"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UA-v0-bVy">
+                                <rect key="frame" x="300" y="450" width="300" height="32"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="staff.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jFu-EQ-dEJ">
-                                <rect key="frame" x="20" y="0.0" width="588" height="421"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="staff.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jFu-EQ-dEJ">
+                                <rect key="frame" x="20" y="0.0" width="560" height="420"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jFu-EQ-dEJ" secondAttribute="height" multiplier="1024:768" id="Gqm-oB-6nm"/>
                                 </constraints>
@@ -968,6 +960,6 @@
         <image name="whole-rest.png" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JSg-Te-5qz"/>
+        <segue reference="Wg3-EA-giB"/>
     </inferredMetricsTieBreakers>
 </document>

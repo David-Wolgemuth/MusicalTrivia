@@ -41,6 +41,7 @@ class MusicNotationViewController: UIViewController
         for button in AnswerButtons {
             button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         }
+        toggleButtons(false)
     }
     
     func buttonClicked(sender: UIButton!)
