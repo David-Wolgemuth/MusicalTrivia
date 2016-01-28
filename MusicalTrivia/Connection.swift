@@ -25,6 +25,7 @@ class Connection
     }
     
     var socket: SocketIOClient
+    var eventListeners = [String]()
     
     private init()
     {
@@ -47,16 +48,18 @@ class Connection
         
         socket.emit("waiting", name)
         socket.once("new-game") { data, _ in
+            self.eventListeners.append("new-game")
             let array = data[0] as! [AnyObject]
             let questionAsker = array[0] as! Bool
             let opponent = array[1] as! String
             controller.gameStarted(questionAsker, opponent: opponent)
+            self.listenForGameOver(controller)
         }
     }
     func listenForQuestions(controller: RouletteViewController)
     {
         socket.on("new-question") { data, _ in
-            
+            self.eventListeners.append("new-question")
             let d = data[0] as! [AnyObject]
             let type = d[0] as! String
             print("Heard Question: \(type)")
@@ -66,16 +69,20 @@ class Connection
             let question = (type, answer, choices) as QuestionTuple
             controller.incomingQuestion(question)
         }
+        
+    }
+    func listenForGameOver(controller: RouletteViewController)
+    {
         socket.once("game-over") { _, _ in
-            print("connection game-over")
             controller.gameOverAlert()
-            self.resetConnection()
+            while self.eventListeners.count > 0 {
+                self.socket.off(self.eventListeners.popLast()!)
+            }
         }
     }
     func resetConnection()
     {
         socket.disconnect()
-        socket.off("new-question")
         connectToServer()
     }
     func sendNewQuestion(controller: RouletteViewController, question: QuestionTuple)
@@ -90,6 +97,7 @@ class Connection
         }
         socket.emit("answer-result", timeLeft)
         socket.once("answer-results") { data, _ in
+            self.eventListeners.append("answer-results")
             let results = data[0] as! [Int]
             controller.answerResultsReceived(results)
         }
@@ -97,7 +105,7 @@ class Connection
     func sendGameOver(controller: RouletteViewController)
     {
         socket.emit("game-over")
-         socket.once("game-over") { _, _ in
+        socket.once("game-over") { _, _ in
             print("connection game-over")
             controller.gameOverAlert()
             self.resetConnection()

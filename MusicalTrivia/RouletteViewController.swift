@@ -126,7 +126,14 @@ class RouletteViewController: UIViewController, NotationDelegate
             won = "Tied"
         }
         let message = "Final Score: \(score[0]) - \(score[1])"
-        let alert = UIAlertController(title: "You \(won)!", message: message, preferredStyle:  .Alert)
+        let title: String
+        if currentQuestion == 7 {
+            title = "You \(won)!"
+        } else {
+            title = "Opponent Left Game"
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle:  .Alert)
         alert.addAction(UIAlertAction(title: "Back to Menu", style: .Default) {
             UIAlertAction in
             self.delegate?.dismissView()
