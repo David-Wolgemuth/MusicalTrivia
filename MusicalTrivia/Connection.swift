@@ -40,10 +40,17 @@ class Connection
     }
     func requestNewGame(controller: RouletteViewController)
     {
-        socket.emit("waiting")
+        var name = "Opponent"
+        if let un = UserData.readUsername() {
+            name = un
+        }
+        
+        socket.emit("waiting", name)
         socket.on("new-game") { data, _ in
-            let questionAsker = data[0] as! Bool
-            controller.gameStarted(questionAsker)
+            let array = data[0] as! [AnyObject]
+            let questionAsker = array[0] as! Bool
+            let opponent = array[1] as! String
+            controller.gameStarted(questionAsker, opponent: opponent)
         }
     }
     func listenForQuestions(controller: RouletteViewController)
@@ -65,11 +72,17 @@ class Connection
         let answer = question.answer as! JSONCompatable
         socket.emit("new-question", [question.type, answer.dictionary, question.choices])
     }
-    func sendAnswerResult(correct: Bool, var timeLeft: Double)
+    func sendAnswerResult(correct: Bool, var timeLeft: Double, controller: RouletteViewController)
     {
         if !correct {
             timeLeft = -1
         }
         socket.emit("answer-result", timeLeft)
+        socket.once("answer-results") { data, _ in
+            let results = data[0] as! [Int]
+            controller.answerResultsReceived(results)
+        }
     }
 }
+
+

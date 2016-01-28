@@ -51,6 +51,7 @@
 		63483D7F1C58510000A5C515 /* RouletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63483D7E1C58510000A5C515 /* RouletteViewController.swift */; };
 		63506EF51C56D0BA00AA0C6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */; };
 		63506EF71C56DE4900AA0C6B /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63506EF61C56DE4900AA0C6B /* UserData.swift */; };
+		63A2B0841C597DBE00BCD05C /* RouletteHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2B0831C597DBE00BCD05C /* RouletteHeaderViewController.swift */; };
 		63B581D01C56E15300EFD835 /* rogue.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B581CF1C56E15300EFD835 /* rogue.png */; };
 		63B581D31C56EED100EFD835 /* ZenModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B581D21C56EED100EFD835 /* ZenModeViewController.swift */; };
 		63B581D51C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */; };
@@ -121,6 +122,7 @@
 		63483D7E1C58510000A5C515 /* RouletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteViewController.swift; sourceTree = "<group>"; };
 		63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		63506EF61C56DE4900AA0C6B /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		63A2B0831C597DBE00BCD05C /* RouletteHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteHeaderViewController.swift; sourceTree = "<group>"; };
 		63B581CF1C56E15300EFD835 /* rogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rogue.png; sourceTree = "<group>"; };
 		63B581D21C56EED100EFD835 /* ZenModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenModeViewController.swift; sourceTree = "<group>"; };
 		63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZenModeSettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				63506EF61C56DE4900AA0C6B /* UserData.swift */,
 				63506EF41C56D0BA00AA0C6B /* HomeViewController.swift */,
 				63DD6AA41C569F7500E50A6B /* Main.storyboard */,
+				63A2B0831C597DBE00BCD05C /* RouletteHeaderViewController.swift */,
 				633963991C57D50600A1AA37 /* SinglePlayerViewController.swift */,
 				63483D511C58388900A5C515 /* SocketIO */,
 				63B581D41C56F62F00EFD835 /* ZenModeSettingsTableViewController.swift */,
@@ -342,6 +345,7 @@
 				63483D6B1C58389500A5C515 /* SocketClientSpec.swift in Sources */,
 				63DD6AA11C569F7500E50A6B /* AppDelegate.swift in Sources */,
 				63483D781C58389500A5C515 /* SocketParsable.swift in Sources */,
+				63A2B0841C597DBE00BCD05C /* RouletteHeaderViewController.swift in Sources */,
 				633415741C570F36000023C8 /* Triad.swift in Sources */,
 				63DD6AA91C569F7500E50A6B /* MusicalTrivia.xcdatamodeld in Sources */,
 				63483D7B1C58389500A5C515 /* SwiftRegex.swift in Sources */,

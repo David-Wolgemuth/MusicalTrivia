@@ -62,7 +62,8 @@ class HomeTableViewController: UITableViewController, StandardDelegate
             let controller = segue.destinationViewController as! SinglePlayerViewController
             controller.delegate = self
         } else if segue.identifier == "Roulette" {
-            
+            let controller = segue.destinationViewController as! RouletteViewController
+            controller.delegate = self
         }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
