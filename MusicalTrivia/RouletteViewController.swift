@@ -112,12 +112,19 @@ class RouletteViewController: UIViewController, NotationDelegate
         if currentQuestion < 7 {
             NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "makeNewQuestion", userInfo: nil, repeats: false)
         } else {
-            gameOverAlert()
+            Connection.sharedInstance.sendGameOver(self)
         }
     }
     func gameOverAlert()
     {
-        let won = score[0] > score[1] ? "Won" : "Lost"
+        let won: String
+        if score[0] > score[1] {
+            won = "Won"
+        } else if score[0] < score[1] {
+            won = "Lost"
+        } else {
+            won = "Tied"
+        }
         let message = "Final Score: \(score[0]) - \(score[1])"
         let alert = UIAlertController(title: "You \(won)!", message: message, preferredStyle:  .Alert)
         alert.addAction(UIAlertAction(title: "Back to Menu", style: .Default) {

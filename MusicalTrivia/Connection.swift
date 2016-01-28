@@ -46,7 +46,7 @@ class Connection
         }
         
         socket.emit("waiting", name)
-        socket.on("new-game") { data, _ in
+        socket.once("new-game") { data, _ in
             let array = data[0] as! [AnyObject]
             let questionAsker = array[0] as! Bool
             let opponent = array[1] as! String
@@ -66,6 +66,17 @@ class Connection
             let question = (type, answer, choices) as QuestionTuple
             controller.incomingQuestion(question)
         }
+        socket.once("game-over") { _, _ in
+            print("connection game-over")
+            controller.gameOverAlert()
+            self.resetConnection()
+        }
+    }
+    func resetConnection()
+    {
+        socket.disconnect()
+        socket.off("new-question")
+        connectToServer()
     }
     func sendNewQuestion(controller: RouletteViewController, question: QuestionTuple)
     {
@@ -81,6 +92,15 @@ class Connection
         socket.once("answer-results") { data, _ in
             let results = data[0] as! [Int]
             controller.answerResultsReceived(results)
+        }
+    }
+    func sendGameOver(controller: RouletteViewController)
+    {
+        socket.emit("game-over")
+         socket.once("game-over") { _, _ in
+            print("connection game-over")
+            controller.gameOverAlert()
+            self.resetConnection()
         }
     }
 }
