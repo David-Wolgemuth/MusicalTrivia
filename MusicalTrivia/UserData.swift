@@ -80,6 +80,20 @@ class UserData
             NSUserDefaults.standardUserDefaults().setObject(1, forKey: "answers-\(correct)")
         }
     }
+    static func addPoints(var points: Int)
+    {
+        if let existing = NSUserDefaults.standardUserDefaults().objectForKey("points") {
+            points += existing as! Int
+        }
+        NSUserDefaults.standardUserDefaults().setObject(points, forKey: "points")
+    }
+    static func readPoints() -> Int
+    {
+        if let points = NSUserDefaults.standardUserDefaults().objectForKey("points") {
+            return points as! Int
+        }
+        return 0
+    }
     static func playerQuestionHistory() -> (correct: Int, incorrect: Int)
     {
         var correct = 0
@@ -91,6 +105,21 @@ class UserData
             incorrect = number as! Int
         }
         return (correct, incorrect)
-        
+    }
+    static func userLevelInfo() -> (level: Int, totalPoints: Int, remainingPoints: Int, percentComplete: Double)
+    {
+        let totalPoints = UserData.readPoints()
+        var remaining = totalPoints
+        var level = 1
+        var percent = -1.0
+        while remaining >= 0 {
+            let toRemove = level * 4 + 24
+            percent = Double(remaining) / Double(toRemove)
+            remaining -= toRemove
+            if remaining >= 0 {
+                ++level
+            }
+        }
+        return (level, totalPoints, remaining, percent)
     }
 }

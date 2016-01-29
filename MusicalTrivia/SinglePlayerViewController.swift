@@ -33,6 +33,7 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         alert.addAction(UIAlertAction(title: "Leave Game", style: .Destructive) {
             UIAlertAction in
+            self.timerStopped = true
             self.delegate?.dismissView()
         })
         presentViewController(alert, animated: true, completion: nil)
@@ -60,17 +61,25 @@ class SinglePlayerViewController: UIViewController, NotationDelegate
     }
     func playerAnswered(answerCorrect correct: Bool)
     {
+        UserData.incrementQuestionsAnswered(answerIsCorrect: correct)
+        
         timerStopped = true
         let image = noteScoreImages[currentQuestion]
+        
         if correct {
             ++correctCount
+            let points: Int
             if counter > 8 {
+                points = 3
                 image.image = UIImage(named: "whole-note-score.png")
             } else if counter > 6.5 {
+                points = 2
                 image.image = UIImage(named: "half-note.png")
             } else {
+                points = 1
                 image.image = UIImage(named: "quarter-note.png")
             }
+            UserData.addPoints(points)
         } else {
             if counter <= 0 {
                 image.image = UIImage(named: "whole-rest.png")

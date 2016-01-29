@@ -24,6 +24,10 @@ class HomeTableViewController: UITableViewController, StandardDelegate
     @IBOutlet weak var userCorrectsLabel: UILabel!
     @IBOutlet weak var userIncorrectsLabel: UILabel!
     
+    @IBOutlet weak var currentLevelLabel: UILabel!
+    @IBOutlet weak var nextLevelProgressBar: UIProgressView!
+    @IBOutlet weak var totalPointsLabel: UILabel!
+    @IBOutlet weak var pointsToNextLevelLabel: UILabel!
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -52,7 +56,15 @@ class HomeTableViewController: UITableViewController, StandardDelegate
         let questions = UserData.playerQuestionHistory()
         userCorrectsLabel.text = String(questions.correct)
         userIncorrectsLabel.text = String(questions.incorrect)
+        
+        let level = UserData.userLevelInfo()
+        currentLevelLabel.text = String(level.level)
+        nextLevelProgressBar.setProgress(Float(level.percentComplete), animated: true)
+        totalPointsLabel.text = String(level.totalPoints)
+        pointsToNextLevelLabel.text = String(level.remainingPoints)
+        
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if segue.identifier == "ZenMode" {

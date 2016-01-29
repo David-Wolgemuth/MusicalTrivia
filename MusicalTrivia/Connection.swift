@@ -25,7 +25,6 @@ class Connection
         socket = SocketIOClient(socketURL: "david.local:5000")
         socket.connect()
         socket.on("connect") { data, _ in
-            print("Connected To Server")
             self.requestNewGame(controller)
         }
     }
@@ -35,14 +34,16 @@ class Connection
         if let un = UserData.readUsername() {
             name = un
         }
+        let level = UserData.userLevelInfo().level
         
-        socket.emit("waiting", name)
+        socket.emit("waiting", [name, level])
         self.eventListeners.append("new-game")
         socket.once("new-game") { data, _ in
             let array = data[0] as! [AnyObject]
             let questionAsker = array[0] as! Bool
             let opponent = array[1] as! String
-            controller.gameStarted(questionAsker, opponent: opponent)
+            let opponentLevel = array[2] as! Int
+            controller.gameStarted(questionAsker, opponent: opponent, opponentLevel: opponentLevel)
             self.listenForGameOver(controller)
         }
     }
@@ -52,7 +53,6 @@ class Connection
         socket.on("new-question") { data, _ in
             let d = data[0] as! [AnyObject]
             let type = d[0] as! String
-            print("Heard Question: \(type)")
             let answer = d[1] as! [String: AnyObject]
             let choices = d[2] as! [String]
             
@@ -90,7 +90,6 @@ class Connection
     }
     func sendGameOver(controller: RouletteViewController)
     {
-        print("duh fuck am i here?")
         socket.emit("game-over")
         self.eventListeners.append("game-over")
         socket.once("game-over") { _, _ in

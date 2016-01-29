@@ -20,6 +20,7 @@ class RouletteViewController: UIViewController, NotationDelegate
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         alert.addAction(UIAlertAction(title: "Leave Game.", style: .Destructive) {
             UIAlertAction in
+            self.timerStopped = true
             self.connection?.socket.disconnect()
             self.delegate?.dismissView()
         })
@@ -63,13 +64,14 @@ class RouletteViewController: UIViewController, NotationDelegate
             uiImage.image = nil
         }
     }
-    func gameStarted(questionAsker: Bool, opponent: String)
+    func gameStarted(questionAsker: Bool, opponent: String, opponentLevel: Int)
     {
         activityIndicator.stopAnimating()
         containerView.hidden = false
         waitingForOpponentLabel.hidden = true
         activityIndicator.hidden = true
         header?.opponentNameLabel.text = opponent
+        header?.opponentLevelLabel.text = String(opponentLevel)
         self.questionAsker = questionAsker
         if questionAsker {
             makeNewQuestion()
@@ -79,6 +81,7 @@ class RouletteViewController: UIViewController, NotationDelegate
     }
     func playerAnswered(answerCorrect correct: Bool)
     {
+        UserData.incrementQuestionsAnswered(answerIsCorrect: correct)
         timerStopped = true
         print("I came here and my answer was correct? \(correct)")
         connection?.sendAnswerResult(correct, timeLeft: counter, controller: self)
@@ -97,21 +100,30 @@ class RouletteViewController: UIViewController, NotationDelegate
     {
         let image = noteScoreImages[currentQuestion]
         let imageName: String
+        let points: Int
         switch (results[0], results[1]) {
         case (0, 0):
             imageName = "quarter-rest.png"
+            points = 0
         case (0, 3):
             imageName = "whole-rest.png"
+            points = 0
         case (3, 0):
             imageName = "whole-note-score.png"
+            points = 3
         case (1, 2):
             imageName = "quarter-note.png"
+            points = 1
         case (2, 1):
             imageName = "half-note.png"
+            points = 2
         default:
             imageName = "broken"
+            points = 0
             print("results: \(results)")
         }
+        
+        UserData.addPoints(points)
         image.image = UIImage(named: imageName)
         score[0] += results[0]
         score[1] += results[1]
@@ -129,22 +141,25 @@ class RouletteViewController: UIViewController, NotationDelegate
     }
     func gameOverAlert()
     {
-        let won: String
-        if score[0] > score[1] {
-            won = "Won"
-        } else if score[0] < score[1] {
-            won = "Lost"
-        } else {
-            won = "Tied"
-        }
-        let message = "Final Score: \(score[0]) - \(score[1])"
         let title: String
         if currentQuestion == 7 {
+            let won: String
+            if score[0] > score[1] {
+                UserData.incrementGamesFinished(playerWon: true)
+                UserData.addPoints(12)
+                won = "Won (+12 Points)"
+            } else if score[0] < score[1] {
+                UserData.incrementGamesFinished(playerWon: false)
+                won = "Lost"
+            } else {
+                won = "Tied"
+            }
             title = "You \(won)!"
         } else {
             title = "Opponent Left Game"
         }
         
+        let message = "Final Score: \(score[0]) - \(score[1])"
         let alert = UIAlertController(title: title, message: message, preferredStyle:  .Alert)
         alert.addAction(UIAlertAction(title: "Back to Menu", style: .Default) {
             UIAlertAction in

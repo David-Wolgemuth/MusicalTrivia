@@ -13,15 +13,17 @@ class RouletteHeaderViewController: UIViewController
     @IBOutlet weak var playerImage: UIImageView!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerScoreLabel: UILabel!
+    @IBOutlet weak var playerLevelLabel: UILabel!
     
-    @IBOutlet weak var opponentImageLabel: UIImageView!
     @IBOutlet weak var opponentNameLabel: UILabel!
     @IBOutlet weak var opponentScoreLabel: UILabel!
+    @IBOutlet weak var opponentLevelLabel: UILabel!
     
     override func viewDidLoad()
     {
         playerNameLabel.text = UserData.readUsername()
         playerImage.image = UserData.readUserImage()
+        playerLevelLabel.text = String(UserData.userLevelInfo().level)
     }
     func setScore(score: [Int])
     {
