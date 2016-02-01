@@ -83,7 +83,6 @@ class RouletteViewController: UIViewController, NotationDelegate
     {
         UserData.incrementQuestionsAnswered(answerIsCorrect: correct)
         timerStopped = true
-        print("I came here and my answer was correct? \(correct)")
         connection?.sendAnswerResult(correct, timeLeft: counter, controller: self)
         counter = 10
     }
@@ -120,7 +119,6 @@ class RouletteViewController: UIViewController, NotationDelegate
         default:
             imageName = "broken"
             points = 0
-            print("results: \(results)")
         }
         
         UserData.addPoints(points)

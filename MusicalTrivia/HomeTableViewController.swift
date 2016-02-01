@@ -82,10 +82,8 @@ class HomeTableViewController: UITableViewController, StandardDelegate
     {
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
         if cell.tag == 1 {
-            print("UserName Label")
             userNameAlert()
         } else if cell.tag == 2 {
-            print("User ImageView ... ")
             delegate?.pickImage()
         } else if let text = cell.textLabel?.text {
             switch text {
@@ -119,5 +117,9 @@ class HomeTableViewController: UITableViewController, StandardDelegate
     func dismissView()
     {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, didUpdateFocusInContext context: UITableViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        <#code#>
     }
 }

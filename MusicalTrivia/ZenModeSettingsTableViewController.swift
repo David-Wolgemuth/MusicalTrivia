@@ -49,9 +49,7 @@ class ZenModeSettingsTableViewController: UITableViewController
         let key = type[0] as! String
         let options = type[1] as! [String]
         let option = options[indexPath.row]
-        print(key + " - " + option)
         let isSet = game!.questionTypes[key]![option]!
-        print(isSet)
         game!.questionTypes[key]![option] = !isSet
         setTableViewBooleans()
     }

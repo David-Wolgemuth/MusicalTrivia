@@ -31,7 +31,6 @@ class AudioPlayer: NSObject
     }
     func playCurrentChord()
     {
-        print("Playing \(currentChord)")
         releaseAllNotes()
         if currentChord.count > 0 {
             playNote(currentChord.removeAtIndex(0))
